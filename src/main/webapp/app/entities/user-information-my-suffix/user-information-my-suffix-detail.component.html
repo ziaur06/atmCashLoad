@@ -1,0 +1,52 @@
+
+<div *ngIf="userInformation">
+    <h2><span jhiTranslate="atmCashLoadApp.userInformation.detail.title">User Information</span> {{userInformation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.userId">User Id</span></dt>
+        <dd>
+            <span>{{userInformation.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.userName">User Name</span></dt>
+        <dd>
+            <span>{{userInformation.userName}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.email">Email</span></dt>
+        <dd>
+            <span>{{userInformation.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.phone">Phone</span></dt>
+        <dd>
+            <span>{{userInformation.phone}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.password">Password</span></dt>
+        <dd>
+            <span>{{userInformation.password}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'atmCashLoadApp.Status.' + userInformation.status}}">{{userInformation.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.userInformation.office">Office</span></dt>
+        <dd>
+            <div *ngIf="userInformation.officeId">
+                <a [routerLink]="['/office-my-suffix', userInformation.officeId]">{{userInformation.officeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-information-my-suffix/'+ userInformation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

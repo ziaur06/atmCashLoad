@@ -1,0 +1,52 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCashBalanceLabel" jhiTranslate="atmCashLoadApp.cashBalance.home.createOrEditLabel">Create or edit a Cash Balance</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cashBalance.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cashBalance.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.cashBalance.balance" for="field_balance">Balance</label>
+            <input type="number" class="form-control" name="balance" id="field_balance"
+                [(ngModel)]="cashBalance.balance" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.cashBalance.n100" for="field_n100">N 100</label>
+            <input type="number" class="form-control" name="n100" id="field_n100"
+                [(ngModel)]="cashBalance.n100" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.cashBalance.n500" for="field_n500">N 500</label>
+            <input type="number" class="form-control" name="n500" id="field_n500"
+                [(ngModel)]="cashBalance.n500" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.cashBalance.n1000" for="field_n1000">N 1000</label>
+            <input type="number" class="form-control" name="n1000" id="field_n1000"
+                [(ngModel)]="cashBalance.n1000" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.cashBalance.office" for="field_office">Office</label>
+            <select class="form-control" id="field_office" name="office" [(ngModel)]="cashBalance.officeId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="officeOption.id" *ngFor="let officeOption of offices; trackBy: trackOfficeById">{{officeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

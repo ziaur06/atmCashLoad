@@ -1,0 +1,26 @@
+
+{
+    "atmCashLoadApp": {
+        "cashBalance" : {
+            "home": {
+                "title": "Cash Balances",
+                "createLabel": "Create a new Cash Balance",
+                "createOrEditLabel": "Create or edit a Cash Balance"
+            },
+            "created": "A new Cash Balance is created with identifier {{ param }}",
+            "updated": "A Cash Balance is updated with identifier {{ param }}",
+            "deleted": "A Cash Balance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cash Balance {{ id }}?"
+            },
+            "detail": {
+                "title": "Cash Balance"
+            },
+            "balance": "Balance",
+            "n100": "N 100",
+            "n500": "N 500",
+            "n1000": "N 1000",
+            "office": "Office"
+        }
+    }
+}

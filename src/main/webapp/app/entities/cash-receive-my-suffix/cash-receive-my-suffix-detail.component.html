@@ -1,0 +1,84 @@
+
+<div *ngIf="cashReceive">
+    <h2><span jhiTranslate="atmCashLoadApp.cashReceive.detail.title">Cash Receive</span> {{cashReceive.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.receiveDate">Receive Date</span></dt>
+        <dd>
+            <span>{{cashReceive.receiveDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.amount">Amount</span></dt>
+        <dd>
+            <span>{{cashReceive.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.userId">User Id</span></dt>
+        <dd>
+            <span>{{cashReceive.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.remarks">Remarks</span></dt>
+        <dd>
+            <span>{{cashReceive.remarks}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.invoiceNumber">Invoice Number</span></dt>
+        <dd>
+            <span>{{cashReceive.invoiceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.tag">Tag</span></dt>
+        <dd>
+            <span>{{cashReceive.tag}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.r100">R 100</span></dt>
+        <dd>
+            <span>{{cashReceive.r100}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.r500">R 500</span></dt>
+        <dd>
+            <span>{{cashReceive.r500}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.r1000">R 1000</span></dt>
+        <dd>
+            <span>{{cashReceive.r1000}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.recjectedAmount">Recjected Amount</span></dt>
+        <dd>
+            <span>{{cashReceive.recjectedAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.f100">F 100</span></dt>
+        <dd>
+            <span>{{cashReceive.f100}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.f500">F 500</span></dt>
+        <dd>
+            <span>{{cashReceive.f500}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.f1000">F 1000</span></dt>
+        <dd>
+            <span>{{cashReceive.f1000}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.tip">Tip</span></dt>
+        <dd>
+            <span>{{cashReceive.tip}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashReceive.office">Office</span></dt>
+        <dd>
+            <div *ngIf="cashReceive.officeId">
+                <a [routerLink]="['/office-my-suffix', cashReceive.officeId]">{{cashReceive.officeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cash-receive-my-suffix/'+ cashReceive.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

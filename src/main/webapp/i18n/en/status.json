@@ -1,0 +1,10 @@
+{
+    "atmCashLoadApp": {
+        "Status" : {
+            "null": "",
+            "ACTIVE": "ACTIVE",
+            "INACTIVE": "INACTIVE",
+            "CLOSE": "CLOSE"
+        }
+    }
+}
