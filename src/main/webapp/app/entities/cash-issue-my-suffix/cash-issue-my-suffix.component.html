@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="atmCashLoadApp.cashIssue.home.title">Cash Issues</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cash-issue-my-suffix" [routerLink]="['/', { outlets: { popup: ['cash-issue-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="atmCashLoadApp.cashIssue.home.createLabel">
+            Create new Cash Issue
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cashIssues">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="issueDate"><span jhiTranslate="atmCashLoadApp.cashIssue.issueDate">Issue Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span jhiTranslate="atmCashLoadApp.cashIssue.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="i100"><span jhiTranslate="atmCashLoadApp.cashIssue.i100">I 100</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="i500"><span jhiTranslate="atmCashLoadApp.cashIssue.i500">I 500</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="i1000"><span jhiTranslate="atmCashLoadApp.cashIssue.i1000">I 1000</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tip"><span jhiTranslate="atmCashLoadApp.cashIssue.tip">Tip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="invoiceNumber"><span jhiTranslate="atmCashLoadApp.cashIssue.invoiceNumber">Invoice Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tag"><span jhiTranslate="atmCashLoadApp.cashIssue.tag">Tag</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="atmCashLoadApp.cashIssue.userId">User Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="atmCashLoadApp.cashIssue.remarks">Remarks</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="officeId"><span jhiTranslate="atmCashLoadApp.cashIssue.office">Office</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cashIssue of cashIssues ;trackBy: trackId">
+                <td><a [routerLink]="['../cash-issue-my-suffix', cashIssue.id ]">{{cashIssue.id}}</a></td>
+                <td>{{cashIssue.issueDate | date:'mediumDate'}}</td>
+                <td>{{cashIssue.amount}}</td>
+                <td>{{cashIssue.i100}}</td>
+                <td>{{cashIssue.i500}}</td>
+                <td>{{cashIssue.i1000}}</td>
+                <td>{{cashIssue.tip}}</td>
+                <td>{{cashIssue.invoiceNumber}}</td>
+                <td>{{cashIssue.tag}}</td>
+                <td>{{cashIssue.userId}}</td>
+                <td>{{cashIssue.remarks}}</td>
+                <td>
+                    <div *ngIf="cashIssue.officeId">
+                        <a [routerLink]="['../office-my-suffix', cashIssue.officeId  ]" >{{cashIssue.officeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cash-issue-my-suffix', cashIssue.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-issue-my-suffix/'+ cashIssue.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-issue-my-suffix/'+ cashIssue.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cashIssues && cashIssues.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

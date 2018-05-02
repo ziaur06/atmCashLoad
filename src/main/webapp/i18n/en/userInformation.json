@@ -1,0 +1,28 @@
+
+{
+    "atmCashLoadApp": {
+        "userInformation" : {
+            "home": {
+                "title": "User Informations",
+                "createLabel": "Create a new User Information",
+                "createOrEditLabel": "Create or edit a User Information"
+            },
+            "created": "A new User Information is created with identifier {{ param }}",
+            "updated": "A User Information is updated with identifier {{ param }}",
+            "deleted": "A User Information is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Information {{ id }}?"
+            },
+            "detail": {
+                "title": "User Information"
+            },
+            "userId": "User Id",
+            "userName": "User Name",
+            "email": "Email",
+            "phone": "Phone",
+            "password": "Password",
+            "status": "Status",
+            "office": "Office"
+        }
+    }
+}

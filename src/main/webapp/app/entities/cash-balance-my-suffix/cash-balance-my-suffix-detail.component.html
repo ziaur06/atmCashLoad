@@ -1,0 +1,44 @@
+
+<div *ngIf="cashBalance">
+    <h2><span jhiTranslate="atmCashLoadApp.cashBalance.detail.title">Cash Balance</span> {{cashBalance.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.cashBalance.balance">Balance</span></dt>
+        <dd>
+            <span>{{cashBalance.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashBalance.n100">N 100</span></dt>
+        <dd>
+            <span>{{cashBalance.n100}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashBalance.n500">N 500</span></dt>
+        <dd>
+            <span>{{cashBalance.n500}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashBalance.n1000">N 1000</span></dt>
+        <dd>
+            <span>{{cashBalance.n1000}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashBalance.office">Office</span></dt>
+        <dd>
+            <div *ngIf="cashBalance.officeId">
+                <a [routerLink]="['/office-my-suffix', cashBalance.officeId]">{{cashBalance.officeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cash-balance-my-suffix/'+ cashBalance.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

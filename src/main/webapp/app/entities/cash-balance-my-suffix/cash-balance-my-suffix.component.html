@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="atmCashLoadApp.cashBalance.home.title">Cash Balances</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cash-balance-my-suffix" [routerLink]="['/', { outlets: { popup: ['cash-balance-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="atmCashLoadApp.cashBalance.home.createLabel">
+            Create new Cash Balance
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cashBalances">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="atmCashLoadApp.cashBalance.balance">Balance</span></th>
+            <th><span jhiTranslate="atmCashLoadApp.cashBalance.n100">N 100</span></th>
+            <th><span jhiTranslate="atmCashLoadApp.cashBalance.n500">N 500</span></th>
+            <th><span jhiTranslate="atmCashLoadApp.cashBalance.n1000">N 1000</span></th>
+            <th><span jhiTranslate="atmCashLoadApp.cashBalance.office">Office</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cashBalance of cashBalances ;trackBy: trackId">
+                <td><a [routerLink]="['../cash-balance-my-suffix', cashBalance.id ]">{{cashBalance.id}}</a></td>
+                <td>{{cashBalance.balance}}</td>
+                <td>{{cashBalance.n100}}</td>
+                <td>{{cashBalance.n500}}</td>
+                <td>{{cashBalance.n1000}}</td>
+                <td>
+                    <div *ngIf="cashBalance.officeId">
+                        <a [routerLink]="['../office-my-suffix', cashBalance.officeId  ]" >{{cashBalance.officeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cash-balance-my-suffix', cashBalance.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-balance-my-suffix/'+ cashBalance.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-balance-my-suffix/'+ cashBalance.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+
+{
+    "atmCashLoadApp": {
+        "cashLoad" : {
+            "home": {
+                "title": "Cash Loads",
+                "createLabel": "Create a new Cash Load",
+                "createOrEditLabel": "Create or edit a Cash Load"
+            },
+            "created": "A new Cash Load is created with identifier {{ param }}",
+            "updated": "A Cash Load is updated with identifier {{ param }}",
+            "deleted": "A Cash Load is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cash Load {{ id }}?"
+            },
+            "detail": {
+                "title": "Cash Load"
+            },
+            "loadingDate": "Loading Date",
+            "amount": "Amount",
+            "l100": "L 100",
+            "l500": "L 500",
+            "l1000": "L 1000",
+            "tag": "Tag",
+            "atm": "Atm"
+        }
+    }
+}

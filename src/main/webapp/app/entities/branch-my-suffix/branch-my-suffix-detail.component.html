@@ -1,0 +1,56 @@
+
+<div *ngIf="branch">
+    <h2><span jhiTranslate="atmCashLoadApp.branch.detail.title">Branch</span> {{branch.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.branch.name">Name</span></dt>
+        <dd>
+            <span>{{branch.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.code">Code</span></dt>
+        <dd>
+            <span>{{branch.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.addressLine1">Address Line 1</span></dt>
+        <dd>
+            <span>{{branch.addressLine1}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.addressLine2">Address Line 2</span></dt>
+        <dd>
+            <span>{{branch.addressLine2}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.mobileNumber">Mobile Number</span></dt>
+        <dd>
+            <span>{{branch.mobileNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.phoneNumber">Phone Number</span></dt>
+        <dd>
+            <span>{{branch.phoneNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.email">Email</span></dt>
+        <dd>
+            <span>{{branch.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.branch.bank">Bank</span></dt>
+        <dd>
+            <div *ngIf="branch.bankId">
+                <a [routerLink]="['/bank-my-suffix', branch.bankId]">{{branch.bankId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'branch-my-suffix/'+ branch.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

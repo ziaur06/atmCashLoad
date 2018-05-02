@@ -1,0 +1,36 @@
+
+{
+    "atmCashLoadApp": {
+        "cashReceive" : {
+            "home": {
+                "title": "Cash Receives",
+                "createLabel": "Create a new Cash Receive",
+                "createOrEditLabel": "Create or edit a Cash Receive"
+            },
+            "created": "A new Cash Receive is created with identifier {{ param }}",
+            "updated": "A Cash Receive is updated with identifier {{ param }}",
+            "deleted": "A Cash Receive is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cash Receive {{ id }}?"
+            },
+            "detail": {
+                "title": "Cash Receive"
+            },
+            "receiveDate": "Receive Date",
+            "amount": "Amount",
+            "userId": "User Id",
+            "remarks": "Remarks",
+            "invoiceNumber": "Invoice Number",
+            "tag": "Tag",
+            "r100": "R 100",
+            "r500": "R 500",
+            "r1000": "R 1000",
+            "recjectedAmount": "Recjected Amount",
+            "f100": "F 100",
+            "f500": "F 500",
+            "f1000": "F 1000",
+            "tip": "Tip",
+            "office": "Office"
+        }
+    }
+}

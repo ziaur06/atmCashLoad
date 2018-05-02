@@ -1,0 +1,32 @@
+
+{
+    "atmCashLoadApp": {
+        "cashIssue" : {
+            "home": {
+                "title": "Cash Issues",
+                "createLabel": "Create a new Cash Issue",
+                "createOrEditLabel": "Create or edit a Cash Issue"
+            },
+            "created": "A new Cash Issue is created with identifier {{ param }}",
+            "updated": "A Cash Issue is updated with identifier {{ param }}",
+            "deleted": "A Cash Issue is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cash Issue {{ id }}?"
+            },
+            "detail": {
+                "title": "Cash Issue"
+            },
+            "issueDate": "Issue Date",
+            "amount": "Amount",
+            "i100": "I 100",
+            "i500": "I 500",
+            "i1000": "I 1000",
+            "tip": "Tip",
+            "invoiceNumber": "Invoice Number",
+            "tag": "Tag",
+            "userId": "User Id",
+            "remarks": "Remarks",
+            "office": "Office"
+        }
+    }
+}

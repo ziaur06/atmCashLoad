@@ -1,0 +1,50 @@
+
+<div *ngIf="bank">
+    <h2><span jhiTranslate="atmCashLoadApp.bank.detail.title">Bank</span> {{bank.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.bank.name">Name</span></dt>
+        <dd>
+            <span>{{bank.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.code">Code</span></dt>
+        <dd>
+            <span>{{bank.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.addressLine1">Address Line 1</span></dt>
+        <dd>
+            <span>{{bank.addressLine1}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.addressLine2">Address Line 2</span></dt>
+        <dd>
+            <span>{{bank.addressLine2}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.mobileNumber">Mobile Number</span></dt>
+        <dd>
+            <span>{{bank.mobileNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.phoneNumber">Phone Number</span></dt>
+        <dd>
+            <span>{{bank.phoneNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.bank.email">Email</span></dt>
+        <dd>
+            <span>{{bank.email}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bank-my-suffix/'+ bank.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

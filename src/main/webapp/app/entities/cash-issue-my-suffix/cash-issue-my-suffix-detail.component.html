@@ -1,0 +1,68 @@
+
+<div *ngIf="cashIssue">
+    <h2><span jhiTranslate="atmCashLoadApp.cashIssue.detail.title">Cash Issue</span> {{cashIssue.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.issueDate">Issue Date</span></dt>
+        <dd>
+            <span>{{cashIssue.issueDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.amount">Amount</span></dt>
+        <dd>
+            <span>{{cashIssue.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.i100">I 100</span></dt>
+        <dd>
+            <span>{{cashIssue.i100}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.i500">I 500</span></dt>
+        <dd>
+            <span>{{cashIssue.i500}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.i1000">I 1000</span></dt>
+        <dd>
+            <span>{{cashIssue.i1000}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.tip">Tip</span></dt>
+        <dd>
+            <span>{{cashIssue.tip}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.invoiceNumber">Invoice Number</span></dt>
+        <dd>
+            <span>{{cashIssue.invoiceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.tag">Tag</span></dt>
+        <dd>
+            <span>{{cashIssue.tag}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.userId">User Id</span></dt>
+        <dd>
+            <span>{{cashIssue.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.remarks">Remarks</span></dt>
+        <dd>
+            <span>{{cashIssue.remarks}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashIssue.office">Office</span></dt>
+        <dd>
+            <div *ngIf="cashIssue.officeId">
+                <a [routerLink]="['/office-my-suffix', cashIssue.officeId]">{{cashIssue.officeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cash-issue-my-suffix/'+ cashIssue.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

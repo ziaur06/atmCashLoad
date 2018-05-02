@@ -1,0 +1,42 @@
+
+<div *ngIf="office">
+    <h2><span jhiTranslate="atmCashLoadApp.office.detail.title">Office</span> {{office.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.office.name">Name</span></dt>
+        <dd>
+            <span>{{office.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.office.address">Address</span></dt>
+        <dd>
+            <span>{{office.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.office.atmInformation">Atm Information</span></dt>
+        <dd>
+            <div *ngIf="office.atmInformationId">
+                <a [routerLink]="['/atm-information-my-suffix', office.atmInformationId]">{{office.atmInformationId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.office.company">Company</span></dt>
+        <dd>
+            <div *ngIf="office.companyId">
+                <a [routerLink]="['/company-my-suffix', office.companyId]">{{office.companyId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'office-my-suffix/'+ office.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

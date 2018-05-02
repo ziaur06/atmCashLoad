@@ -1,0 +1,52 @@
+
+<div *ngIf="cashLoad">
+    <h2><span jhiTranslate="atmCashLoadApp.cashLoad.detail.title">Cash Load</span> {{cashLoad.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.loadingDate">Loading Date</span></dt>
+        <dd>
+            <span>{{cashLoad.loadingDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.amount">Amount</span></dt>
+        <dd>
+            <span>{{cashLoad.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.l100">L 100</span></dt>
+        <dd>
+            <span>{{cashLoad.l100}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.l500">L 500</span></dt>
+        <dd>
+            <span>{{cashLoad.l500}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.l1000">L 1000</span></dt>
+        <dd>
+            <span>{{cashLoad.l1000}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.tag">Tag</span></dt>
+        <dd>
+            <span>{{cashLoad.tag}}</span>
+        </dd>
+        <dt><span jhiTranslate="atmCashLoadApp.cashLoad.atm">Atm</span></dt>
+        <dd>
+            <div *ngIf="cashLoad.atmId">
+                <a [routerLink]="['/atm-information-my-suffix', cashLoad.atmId]">{{cashLoad.atmId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cash-load-my-suffix/'+ cashLoad.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

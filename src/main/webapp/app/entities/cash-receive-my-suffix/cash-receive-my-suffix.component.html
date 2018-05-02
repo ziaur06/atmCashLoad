@@ -1,0 +1,98 @@
+<div>
+    <h2>
+        <span jhiTranslate="atmCashLoadApp.cashReceive.home.title">Cash Receives</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cash-receive-my-suffix" [routerLink]="['/', { outlets: { popup: ['cash-receive-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="atmCashLoadApp.cashReceive.home.createLabel">
+            Create new Cash Receive
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cashReceives">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="receiveDate"><span jhiTranslate="atmCashLoadApp.cashReceive.receiveDate">Receive Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span jhiTranslate="atmCashLoadApp.cashReceive.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="atmCashLoadApp.cashReceive.userId">User Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="atmCashLoadApp.cashReceive.remarks">Remarks</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="invoiceNumber"><span jhiTranslate="atmCashLoadApp.cashReceive.invoiceNumber">Invoice Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tag"><span jhiTranslate="atmCashLoadApp.cashReceive.tag">Tag</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="r100"><span jhiTranslate="atmCashLoadApp.cashReceive.r100">R 100</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="r500"><span jhiTranslate="atmCashLoadApp.cashReceive.r500">R 500</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="r1000"><span jhiTranslate="atmCashLoadApp.cashReceive.r1000">R 1000</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="recjectedAmount"><span jhiTranslate="atmCashLoadApp.cashReceive.recjectedAmount">Recjected Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="f100"><span jhiTranslate="atmCashLoadApp.cashReceive.f100">F 100</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="f500"><span jhiTranslate="atmCashLoadApp.cashReceive.f500">F 500</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="f1000"><span jhiTranslate="atmCashLoadApp.cashReceive.f1000">F 1000</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tip"><span jhiTranslate="atmCashLoadApp.cashReceive.tip">Tip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="officeId"><span jhiTranslate="atmCashLoadApp.cashReceive.office">Office</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cashReceive of cashReceives ;trackBy: trackId">
+                <td><a [routerLink]="['../cash-receive-my-suffix', cashReceive.id ]">{{cashReceive.id}}</a></td>
+                <td>{{cashReceive.receiveDate | date:'mediumDate'}}</td>
+                <td>{{cashReceive.amount}}</td>
+                <td>{{cashReceive.userId}}</td>
+                <td>{{cashReceive.remarks}}</td>
+                <td>{{cashReceive.invoiceNumber}}</td>
+                <td>{{cashReceive.tag}}</td>
+                <td>{{cashReceive.r100}}</td>
+                <td>{{cashReceive.r500}}</td>
+                <td>{{cashReceive.r1000}}</td>
+                <td>{{cashReceive.recjectedAmount}}</td>
+                <td>{{cashReceive.f100}}</td>
+                <td>{{cashReceive.f500}}</td>
+                <td>{{cashReceive.f1000}}</td>
+                <td>{{cashReceive.tip}}</td>
+                <td>
+                    <div *ngIf="cashReceive.officeId">
+                        <a [routerLink]="['../office-my-suffix', cashReceive.officeId  ]" >{{cashReceive.officeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cash-receive-my-suffix', cashReceive.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-receive-my-suffix/'+ cashReceive.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cash-receive-my-suffix/'+ cashReceive.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cashReceives && cashReceives.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

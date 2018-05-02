@@ -1,0 +1,65 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserInformationLabel" jhiTranslate="atmCashLoadApp.userInformation.home.createOrEditLabel">Create or edit a User Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userInformation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userInformation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.userId" for="field_userId">User Id</label>
+            <input type="text" class="form-control" name="userId" id="field_userId"
+                [(ngModel)]="userInformation.userId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.userName" for="field_userName">User Name</label>
+            <input type="text" class="form-control" name="userName" id="field_userName"
+                [(ngModel)]="userInformation.userName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="userInformation.email" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                [(ngModel)]="userInformation.phone" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="userInformation.password" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="userInformation.status" id="field_status" >
+                <option value="ACTIVE">{{'atmCashLoadApp.Status.ACTIVE' | translate}}</option>
+                <option value="INACTIVE">{{'atmCashLoadApp.Status.INACTIVE' | translate}}</option>
+                <option value="CLOSE">{{'atmCashLoadApp.Status.CLOSE' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="atmCashLoadApp.userInformation.office" for="field_office">Office</label>
+            <select class="form-control" id="field_office" name="office" [(ngModel)]="userInformation.officeId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="officeOption.id" *ngFor="let officeOption of offices; trackBy: trackOfficeById">{{officeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
